@@ -1,0 +1,224 @@
+@import "tailwindcss";
+
+@theme {
+  /* ── Orange Scale ───────────────────────────────────────────────── */
+  --color-orange-50:  #FFF2EC;
+  --color-orange-100: #FFD9C2;
+  --color-orange-200: #FFBC97;
+  --color-orange-300: #F59F6E;
+  --color-orange-400: #E88050;
+  --color-orange-500: #D97757;
+  --color-orange-600: #BF5F36;
+  --color-orange-700: #9C4B23;
+  --color-orange-800: #773714;
+  --color-orange-900: #4D2208;
+
+  /* ── Slate Green Scale ──────────────────────────────────────────── */
+  --color-green-50:  #EEF4EF;
+  --color-green-100: #D2E5D4;
+  --color-green-200: #AACBAE;
+  --color-green-300: #7DAD83;
+  --color-green-400: #5A8D61;
+  --color-green-500: #4A6B4E;
+  --color-green-600: #385338;
+  --color-green-700: #283C29;
+  --color-green-800: #19261A;
+  --color-green-900: #0D150E;
+
+  /* ── Stone Scale ────────────────────────────────────────────────── */
+  --color-stone-50:  #FAF7F2;
+  --color-stone-100: #F2EBE0;
+  --color-stone-200: #E4D8C8;
+  --color-stone-300: #C9B9A5;
+  --color-stone-400: #A6917A;
+  --color-stone-500: #887460;
+  --color-stone-600: #6C5B47;
+  --color-stone-700: #504333;
+  --color-stone-800: #352C21;
+  --color-stone-900: #1E1811;
+
+  /* ── State Colors ───────────────────────────────────────────────── */
+  --color-error: #C0362A;
+
+  /* ── Shadows (warm-tinted, stone hue) ──────────────────────────── */
+  --shadow-xs:  0 1px 2px  rgba(30, 24, 17, 0.05);
+  --shadow-sm:  0 2px 4px  rgba(30, 24, 17, 0.08);
+  --shadow-md:  0 4px 12px rgba(30, 24, 17, 0.10);
+  --shadow-lg:  0 8px 24px rgba(30, 24, 17, 0.12);
+  --shadow-xl:  0 16px 48px rgba(30, 24, 17, 0.15);
+  --shadow-2xl: 0 24px 64px rgba(30, 24, 17, 0.20);
+
+  /* ── Letter Spacing ─────────────────────────────────────────────── */
+  --tracking-caps: 0.14em;
+
+  /* ── Line Height ────────────────────────────────────────────────── */
+  --leading-diary: 1.9;
+}
+
+@theme inline {
+  --font-sans: var(--font-raleway);
+  --font-serif: var(--font-merriweather);
+}
+
+:root {
+  /* ── Surfaces ───────────────────────────────────────────────────── */
+  --color-bg:             var(--color-stone-50);
+  --color-surface:        #FFFFFF;
+  --color-surface-warm:   var(--color-stone-100);
+  --color-surface-raised: #FDFBF8;
+  --color-surface-dark:   var(--color-stone-900);
+
+  /* ── Borders ────────────────────────────────────────────────────── */
+  --color-border:       var(--color-stone-200);
+  --color-border-strong: var(--color-stone-300);
+  --color-border-focus:  var(--color-orange-500);
+
+  /* ── Text ───────────────────────────────────────────────────────── */
+  --color-text-primary:   var(--color-stone-900);
+  --color-text-secondary: var(--color-stone-600);
+  --color-text-muted:     var(--color-stone-400);
+  --color-text-on-dark:   var(--color-stone-100);
+  --color-text-on-accent: #FFFFFF;
+  --color-text-link:      var(--color-orange-600);
+  --color-text-link-hover: var(--color-orange-700);
+
+  /* ── Brand Primaries ────────────────────────────────────────────── */
+  --color-accent:         var(--color-orange-500);
+  --color-accent-hover:   var(--color-orange-600);
+  --color-accent-active:  var(--color-orange-700);
+  --color-accent-subtle:  var(--color-orange-50);
+  --color-accent-border:  var(--color-orange-200);
+
+  --color-secondary:        var(--color-green-500);
+  --color-secondary-hover:  var(--color-green-600);
+  --color-secondary-active: var(--color-green-700);
+  --color-secondary-subtle: var(--color-green-50);
+  --color-secondary-border: var(--color-green-200);
+
+  /* ── Sidebar ────────────────────────────────────────────────────── */
+  --color-sidebar-bg:     var(--color-stone-100);
+  --color-sidebar-text:   var(--color-stone-600);
+  --color-sidebar-active: var(--color-stone-200);
+  --color-sidebar-accent: var(--color-orange-500);
+
+  /* ── State ──────────────────────────────────────────────────────── */
+  --color-error-subtle:   #FAECEA;
+  --color-success:        var(--color-green-500);
+  --color-success-subtle: var(--color-green-50);
+
+  /* ── Typography Aliases ─────────────────────────────────────────── */
+  --font-body:    var(--font-serif);
+  --font-heading: var(--font-sans);
+  --font-ui:      var(--font-sans);
+
+  /* ── Layout ─────────────────────────────────────────────────────── */
+  --sidebar-width:     248px;
+  --content-max-width: 720px;
+  --prose-max-width:   62ch;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  font-family: var(--font-serif);
+}
+
+/* ── Landing Page ─────────────────────────────────────────────────── */
+
+.landing-page {
+  @apply flex flex-col min-h-screen bg-stone-50;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent,
+    transparent 31px,
+    rgba(196, 175, 148, 0.18) 31px,
+    rgba(196, 175, 148, 0.18) 32px
+  );
+}
+
+.landing-spine {
+  @apply fixed top-0 left-0 right-0 h-[3px] bg-orange-500 z-10;
+}
+
+.landing-nav {
+  @apply pt-9 px-12;
+}
+
+.landing-logo {
+  @apply inline-flex items-center gap-3 no-underline;
+}
+
+.landing-logo-mark {
+  @apply w-8 shrink-0;
+  height: 38px;
+}
+
+.landing-wordmark {
+  @apply flex flex-col leading-none gap-0.5;
+}
+
+.landing-wordmark-name {
+  @apply font-sans font-extrabold tracking-[-0.01em] text-stone-900;
+  font-size: 17px;
+}
+
+.landing-wordmark-tag {
+  @apply font-serif font-normal italic tracking-[0.04em] text-orange-500;
+  font-size: 10px;
+}
+
+.landing-main {
+  @apply flex-1 flex items-center justify-center px-6 pt-12 pb-24;
+}
+
+.landing-hero {
+  @apply max-w-[560px] w-full text-center flex flex-col items-center;
+}
+
+.landing-hero-rule {
+  @apply w-9 h-0.5 bg-orange-500 mb-9;
+}
+
+.landing-hero-title {
+  @apply font-sans font-black tracking-[-0.02em] leading-[1.1] text-stone-900 mb-6;
+  font-size: clamp(2.5rem, 6vw, 3.75rem);
+}
+
+.landing-hero-title em {
+  @apply not-italic text-orange-500;
+}
+
+.landing-hero-body {
+  @apply font-serif font-light italic leading-[1.7] text-stone-600 max-w-[38ch] mb-12;
+  font-size: 1.0625rem;
+}
+
+.landing-cta {
+  @apply px-10 py-4;
+}
+
+.landing-footer {
+  @apply py-6 px-12 flex justify-center;
+}
+
+.landing-footer-copy {
+  @apply font-sans font-normal tracking-[0.08em] text-stone-400 uppercase;
+  font-size: 0.6875rem;
+}
+
+/* ── Logo dark variant (sidebar) ─────────────────────────────────── */
+
+.landing-logo-dark {
+  @apply inline-flex items-center gap-3 no-underline;
+}
+
+.landing-wordmark-name-dark {
+  @apply font-sans font-extrabold tracking-[-0.01em];
+  font-size: 17px;
+  color: #ffffff;
+}
+
+.landing-wordmark-tag-dark {
+  @apply font-serif font-normal italic tracking-[0.04em] text-orange-400;
+  font-size: 10px;
+}
