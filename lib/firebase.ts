@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
-import { getAI, getGenerativeModel, GoogleAIBackend } from "firebase/ai";
+import { getAI, getGenerativeModel, GoogleAIBackend, Schema } from "firebase/ai";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAcrbbEeIp5_IyqeQKNSmdLDpjEs1S0a2w",
@@ -23,5 +23,12 @@ export const model = getGenerativeModel(ai, {
   model: "gemini-3.5-flash", 
   generationConfig: {
     maxOutputTokens: 1000,
+    responseMimeType: "application/json",
+    responseSchema: Schema.object({
+      properties: {
+        "title": Schema.string(),
+        "content": Schema.string(),
+      }
+    }),
   } 
 });
