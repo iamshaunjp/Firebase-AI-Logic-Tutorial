@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { PERSONALITIES } from "@/lib/personalities";
 import styles from "@/app/dashboard/Dashboard.module.css";
+import { model } from "@/lib/firebase";
 
 export default function PersonalitiesPage() {
   const [input, setInput] = useState("");
@@ -13,11 +14,23 @@ export default function PersonalitiesPage() {
   const [result, setResult] = useState("");
   const [loading, setLoading] = useState(false);
 
-  async function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.SubmitEvent) {
     e.preventDefault();
     setLoading(true);
-    // TODO: replace with Firebase AI Logic call
-    setResult("Firebase AI Logic response will appear here.");
+    
+    // make a prompt
+    const prompt = `
+      You are a ${personality}.
+      Rewrite the following text to match your persona: ${input}
+      Return only the rewritten text, no explanations or preamble.
+    `
+
+    // send prompt and await result
+    const result = await model.generateContent(prompt);
+
+    // get the response text
+    setResult(result.response.text());
+
     setLoading(false);
   }
 
