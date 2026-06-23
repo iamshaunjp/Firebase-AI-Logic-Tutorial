@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { PERSONALITIES } from "@/lib/personalities";
 import styles from "@/app/dashboard/Dashboard.module.css";
-import { model } from "@/lib/firebase";
 
 export default function PersonalitiesPage() {
   const [input, setInput] = useState("");
@@ -18,19 +17,7 @@ export default function PersonalitiesPage() {
     e.preventDefault();
     setLoading(true);
     
-    // make a prompt
-    const prompt = `
-      You are a ${personality}.
-      Rewrite the following text to match your persona: ${input}
-      Return only the rewritten text, no explanations or preamble.
-    `
-
-    // send prompt and await result
-    const result = await model.generateContent(prompt);
-
-    // get the response text
-    setResult(result.response.text());
-
+    setResult("response text here");
     setLoading(false);
   }
 
