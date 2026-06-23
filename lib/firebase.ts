@@ -23,12 +23,5 @@ export const model = getGenerativeModel(ai, {
   model: "gemini-3.5-flash", 
   generationConfig: {
     maxOutputTokens: 1000,
-    responseMimeType: "application/json",
-    responseSchema: Schema.object({
-      properties: {
-        "title": Schema.string(),
-        "content": Schema.string(),
-      }
-    }),
   } 
 });

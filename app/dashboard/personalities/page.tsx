@@ -11,7 +11,7 @@ import { model } from "@/lib/firebase";
 export default function PersonalitiesPage() {
   const [input, setInput] = useState("");
   const [personality, setPersonality] = useState("");
-  const [result, setResult] = useState({ title: "", content: "" });
+  const [result, setResult] = useState("");
   const [loading, setLoading] = useState(false);
 
   async function handleSubmit(e: React.SubmitEvent) {
@@ -27,10 +27,9 @@ export default function PersonalitiesPage() {
 
     // send prompt and await result
     const result = await model.generateContent(prompt);
-    const json = JSON.parse(result.response.text());
 
     // get the response text
-    setResult(json);
+    setResult(result.response.text());
 
     setLoading(false);
   }
@@ -84,8 +83,8 @@ export default function PersonalitiesPage() {
       {result && (
         <div className={styles.resultArea}>
           <Card variant="warm" padding="md">
-            <h3 className="text-bold text-2xl">{result.title}</h3>
-            <p className={styles.glorifiedBody}>{result.content}</p>
+            <h3 className="text-bold text-2xl">{result}</h3>
+            <p className={styles.glorifiedBody}>{result}</p>
           </Card>
         </div>
       )}
