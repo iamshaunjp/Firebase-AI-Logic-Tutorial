@@ -83,7 +83,6 @@ export default function PersonalitiesPage() {
       {result && (
         <div className={styles.resultArea}>
           <Card variant="warm" padding="md">
-            <h3 className="text-bold text-2xl">{result}</h3>
             <p className={styles.glorifiedBody}>{result}</p>
           </Card>
         </div>
